@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>实例目录 · LLM4Rail</title>
+<meta name="description" content="LLM4Rail 跟踪的 166 个基准实例：PESPlib、TimPassLib、DISPLIB 和 MIPLIB。">
+<meta name="author" content="曹步云、李洋、王佳怡、沈照坪、田威凛、张成玮、王卓钰、车云舟、姚珊、蒋华孝、林中阳、李鑫、杨麟儿、丁丁、黄雅平">
+<link rel="canonical" href="https://llm4rail.github.io/zh/instances/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LLM4Rail">
+<meta property="og:url" content="https://llm4rail.github.io/zh/instances/">
+<meta property="og:title" content="实例目录 · LLM4Rail">
+<meta property="og:description" content="LLM4Rail 跟踪的 166 个基准实例：PESPlib、TimPassLib、DISPLIB 和 MIPLIB。">
+<meta property="og:image" content="https://llm4rail.github.io/assets/img/icon-512.png">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" hreflang="en" href="https://llm4rail.github.io/instances/">
+<link rel="alternate" hreflang="zh-CN" href="https://llm4rail.github.io/zh/instances/">
+<link rel="alternate" hreflang="x-default" href="https://llm4rail.github.io/instances/">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&family=Space+Grotesk:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html" aria-label="LLM4Rail 首页">
+      <img src="../../assets/img/llm4rail-mark-simple.svg" alt="" width="34" height="34">
+      <span>LLM<b>4</b>Rail</span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="../index.html">概览</a>
+      <a href="../index.html#problems">问题库</a>
+      <a href="index.html" aria-current="page">实例</a>
+      <a href="../index.html#method">方法</a>
+      <a href="../index.html#roadmap">路线图</a>
+      <a href="../index.html#citation">引用</a>
+      <a class="lang-switch" href="../../instances/index.html" hreflang="en" lang="en">EN</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wide">
+  <section class="page-head">
+    <div class="wrap">
+      <p class="kicker">实例目录</p>
+      <h1 id="cat-cap">铁路基准实例及其公开纪录</h1>
+      <p>目录收录四个问题库的 166 个模型条目，含同源变体。每个条目分别列出已知最好解、最好下界（如有）及其来源。LLM4Rail 一栏用于发布本项目验证后的结果。</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="toolbar">
+      <div class="field"><label for="q">搜索</label><input id="q" type="search" placeholder="实例、集合或纪录来源" autocomplete="off"></div>
+      <div class="field"><label for="lib">问题库</label><select id="lib"></select></div>
+      <div class="field"><label for="set">集合</label><select id="set"></select></div>
+      <div class="field"><label for="status">状态</label><select id="status"></select></div>
+      <div class="count" id="count" aria-live="polite"></div>
+    </div>
+
+    <div class="table-box" id="cat-box" tabindex="0" role="region" aria-labelledby="cat-cap">
+      <table id="cat">
+        <thead>
+          <tr>
+            <th scope="col">实例</th><th scope="col">问题库 / 集合</th><th scope="col" class="num">规模</th>
+            <th scope="col" class="num">已知最好解</th><th scope="col" class="num">最好下界</th><th scope="col" class="num">差距</th>
+            <th scope="col">状态</th><th scope="col">纪录来源</th><th scope="col">LLM4Rail</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+
+    <div class="dl">
+      <a class="btn ghost" href="../../data/instances.csv" download>下载 CSV</a>
+      <a class="btn ghost" href="../../data/instances.json" download>下载 JSON</a>
+    </div>
+
+    <div class="callout">
+      <h2>数据说明</h2>
+      <p>所有实例都是最小化问题。差距 =（已知最好解 − 最好下界）÷ |已知最好解|，上下界相等时差距为零。规模一栏中，PESPlib 和 TimPassLib 使用事件数 / 活动数，DISPLIB 使用列车数 / 作业数，MIPLIB 使用变量数 / 约束数。纪录来源分别链接上下界出处，悬停可查看证据说明。</p>
+      <p><strong>PESPlib</strong>：取自<a href="https://timpasslib.aalto.fi/pesplib.html">纪录表</a>，2026-11-11 读取。问题库注明其下界未经验证。</p>
+      <p><strong>TimPassLib</strong>：取自<a href="https://timpasslib.aalto.fi/solutions.html">解页面</a>，2026-11-11 读取，采用列出的最低总目标值和客流路径松弛下界。本站统一使用相对差距。</p>
+      <p><strong>DISPLIB</strong>：逐实例比较 <a href="https://displib.github.io/">DISPLIB 2025 竞赛记录</a>、<a href="https://doi.org/10.1016/j.jrtpm.2026.100600">Fuchs 等（附录 B，表 B.8–B.15）</a>和 <a href="https://doi.org/10.4230/OASIcs.ATMOS.2026.6">Stärk 等（附录 A，表 5–7）</a>。当前采用的 98 个上界已用竞赛解或 <a href="https://git.zib.de/api/v4/projects/lstaerk%2Ftdpnw-instances/repository/files/solutions%2Fdisplib_problems_solutions_2026-07-03.zip/raw?ref=HEAD">Stärk 等的补充解文件</a>经官方验证程序复核。另有 14 个 Wabtec 上界采用 Fuchs 等的论文值，尚缺可复核的公开解文件。</p>
+      <p>DISPLIB 下界来自注明出处的论文或目标值非负性。目录排除了与已验证解或已证明最优值冲突的报告值。Fuchs 等的模型采用连续时间和资源先后关系，与官方验证程序按事件次序检查可行性的方式有差异。保留的论文下界按报告值引用，证书尚未由本站逐一重放。Trautsch 等的表 3 按组汇总，未用于更新单个实例。</p>
+      <p><strong>MIPLIB</strong> 的 <a href="https://miplib.zib.de/tag_easy.html">Easy</a> 和 <a href="https://miplib.zib.de/tag_hard.html">Hard</a> 是难度标签。上下界采用 <a href="https://miplib.zib.de/downloads/miplib2017-v37.solu">MIPLIB 2017 官方解文件第 37 版</a>标为最优的值。<a href="https://miplib.zib.de/instance_details_rail03.html">rail03</a> 详情页顶部目标值与第 37 版一致，其可下载解列表显示的是 −823.4828。</p>
+      <p>同源模型按目录条目分别计数，下载数据用 <code>family</code> 标记已确认的关系。PESPlib 和 TimPassLib 的 R1L1–R4L4 共享基础路网，TimPassLib 加入了客流路径与对应目标。PESPlib 的 R1L1v、R4L4v 为对应变体。MIPLIB 的 timtab1CUTS 在 timtab1 上增加约束，ic97、icir97 和 nh97 各有 potential 与 tension 版本，其中 icir97 两个模型的最优值分别为 6325 和 6375。</p>
+      <p>DISPLIB 也包含同源变体。西门子实例分为设有追踪间隔的 <code>smi_headway</code> 和无此要求的 <code>smi_close</code>。挪威 Dovrebanen、奥斯陆地区及 Wabtec 实例包含同一路网下不同调度时间窗口的版本。112 个官方实例文件的内容各异，目录按文件逐条计数。见 <a href="https://displib.github.io/">DISPLIB 官方分组</a>。</p>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <img src="../../assets/img/llm4rail-horizontal-reverse.svg" alt="LLM4Rail">
+    <div>各基准归其维护者所有：<a href="https://timpasslib.aalto.fi/pesplib.html">PESPlib</a>、<a href="https://timpasslib.aalto.fi/solutions.html">TimPassLib</a>、<a href="https://displib.github.io/">DISPLIB</a>、<a href="https://miplib.zib.de/">MIPLIB</a>。</div>
+    <div><a href="https://github.com/LLM4Rail/llm4rail.github.io">GitHub 源码</a></div>
+  </div>
+</footer>
+
+<script src="../../assets/js/data.js"></script>
+<script src="../../assets/js/i18n.js"></script>
+<script src="../../assets/js/instances.js"></script>
+</body>
+</html>

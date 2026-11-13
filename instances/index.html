@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instances · LLM4Rail</title>
+<meta name="description" content="Baseline catalogue of 166 benchmark instances tracked by LLM4Rail: PESPlib, TimPassLib, DISPLIB and MIPLIB.">
+<meta name="author" content="Buyun Cao, Yang Li, Jiayi Wang, Zhaoping Shen, Weilin Tian, Chengwei Zhang, Zhuoyu Wang, Yunzhou Che, Shan Yao, Huaxiao Jiang, Zhongyang Lin, Xin Li, Liner Yang, Ding Ding, Yaping Huang">
+<link rel="canonical" href="https://llm4rail.github.io/instances/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LLM4Rail">
+<meta property="og:url" content="https://llm4rail.github.io/instances/">
+<meta property="og:title" content="Instances · LLM4Rail">
+<meta property="og:description" content="Baseline catalogue of 166 benchmark instances tracked by LLM4Rail: PESPlib, TimPassLib, DISPLIB and MIPLIB.">
+<meta property="og:image" content="https://llm4rail.github.io/assets/img/icon-512.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" hreflang="en" href="https://llm4rail.github.io/instances/">
+<link rel="alternate" hreflang="zh-CN" href="https://llm4rail.github.io/zh/instances/">
+<link rel="alternate" hreflang="x-default" href="https://llm4rail.github.io/instances/">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html" aria-label="LLM4Rail home">
+      <img src="../assets/img/llm4rail-mark-simple.svg" alt="" width="34" height="34">
+      <span>LLM<b>4</b>Rail</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="../index.html">Overview</a>
+      <a href="../index.html#problems">Problems</a>
+      <a href="index.html" aria-current="page">Instances</a>
+      <a href="../index.html#method">Method</a>
+      <a href="../index.html#roadmap">Roadmap</a>
+      <a href="../index.html#citation">Cite</a>
+      <a class="lang-switch" href="../zh/instances/index.html" hreflang="zh-CN" lang="zh-CN">中文</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wide">
+  <section class="page-head">
+    <div class="wrap">
+      <p class="kicker">Instance catalogue</p>
+      <h1 id="cat-cap">Railway benchmark instances and their published records</h1>
+      <p>The catalogue tracks 166 model entries from four libraries, including variants. Each entry lists the best known solution, the best lower bound where available, and their sources. The LLM4Rail column is for verified project results.</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="toolbar">
+      <div class="field"><label for="q">Search</label><input id="q" type="search" placeholder="Instance, set or record" autocomplete="off"></div>
+      <div class="field"><label for="lib">Library</label><select id="lib"></select></div>
+      <div class="field"><label for="set">Set</label><select id="set"></select></div>
+      <div class="field"><label for="status">Status</label><select id="status"></select></div>
+      <div class="count" id="count" aria-live="polite"></div>
+    </div>
+
+    <div class="table-box" id="cat-box" tabindex="0" role="region" aria-labelledby="cat-cap">
+      <table id="cat">
+        <thead>
+          <tr>
+            <th scope="col">Instance</th><th scope="col">Library / set</th><th scope="col" class="num">Size</th>
+            <th scope="col" class="num">Best known</th><th scope="col" class="num">Best lower bound</th><th scope="col" class="num">Gap</th>
+            <th scope="col">Status</th><th scope="col">Record</th><th scope="col">LLM4Rail</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+
+    <div class="dl">
+      <a class="btn ghost" href="../data/instances.csv" download>Download CSV</a>
+      <a class="btn ghost" href="../data/instances.json" download>Download JSON</a>
+    </div>
+
+    <div class="callout">
+      <h2>Notes on the data</h2>
+      <p>All instances are minimisation problems. Gap = (best known − best lower bound) ÷ |best known|, with zero gap when the bounds are equal. Size is events / activities for PESPlib and TimPassLib, trains / operations for DISPLIB, and variables / constraints for MIPLIB. The record column links to the source for each bound and describes the evidence on hover.</p>
+      <p><strong>PESPlib</strong>: <a href="https://timpasslib.aalto.fi/pesplib.html">records table</a>, read 2026-11-11. The library states that lower bounds are not verified.</p>
+      <p><strong>TimPassLib</strong>: <a href="https://timpasslib.aalto.fi/solutions.html">solutions page</a>, read 2026-11-11. We use the lowest listed total objective and the lower bound from the passenger routing relaxation. The catalogue uses relative gaps throughout.</p>
+      <p><strong>DISPLIB</strong>: we compare the <a href="https://displib.github.io/">DISPLIB 2025 competition records</a>, <a href="https://doi.org/10.1016/j.jrtpm.2026.100600">Fuchs et al. (Appendix B, Tables B.8–B.15)</a>, and <a href="https://doi.org/10.4230/OASIcs.ATMOS.2026.6">Stärk et al. (Appendix A, Tables 5–7)</a>. The official verifier confirms 98 of the selected upper bounds using competition solutions or the <a href="https://git.zib.de/api/v4/projects/lstaerk%2Ftdpnw-instances/repository/files/solutions%2Fdisplib_problems_solutions_2026-07-03.zip/raw?ref=HEAD">supplementary solutions from Stärk et al.</a>. The other 14 are Wabtec values reported by Fuchs et al. for which we found no public solution files to check.</p>
+      <p>DISPLIB lower bounds come from the cited papers or the nonnegativity of the objective. We exclude reported values that conflict with verified solutions or proven optima. Fuchs et al. model resource precedence in continuous time, while the official verifier checks the order of events. The catalogue attributes the retained paper bounds to their authors. Individual lower-bound certificates have yet to be replayed for the catalogue. Table 3 of Trautsch et al. reports aggregate results and supplies no individual values.</p>
+      <p><strong>MIPLIB</strong>: <a href="https://miplib.zib.de/tag_easy.html">Easy</a> and <a href="https://miplib.zib.de/tag_hard.html">Hard</a> are difficulty tags. Both bounds use the values marked optimal in the <a href="https://miplib.zib.de/downloads/miplib2017-v37.solu">MIPLIB 2017 solution file, version 37</a>. The objective at the top of the <a href="https://miplib.zib.de/instance_details_rail03.html">rail03</a> details page agrees with v37. Its downloadable solution list shows −823.4828.</p>
+      <p>Related models count as separate entries. The downloads use <code>family</code> to mark confirmed relationships. PESPlib and TimPassLib share the base networks R1L1–R4L4. TimPassLib adds passenger routing and its objective. PESPlib includes the corresponding variants R1L1v and R4L4v. In MIPLIB, timtab1CUTS adds constraints to timtab1, and ic97, icir97 and nh97 each have potential and tension versions. The two icir97 models have optimal values of 6325 and 6375 respectively.</p>
+      <p>DISPLIB also includes related variants. The Siemens instances have <code>smi_headway</code> versions with headway requirements and <code>smi_close</code> versions without them. The Dovrebanen, Oslo-area and Wabtec instances include different dispatching windows on the same networks. The 112 official instance files have distinct contents, and the catalogue counts each file separately. See the <a href="https://displib.github.io/">official DISPLIB groups</a>.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <img src="../assets/img/llm4rail-horizontal-reverse.svg" alt="LLM4Rail">
+    <div>Benchmarks belong to their maintainers: <a href="https://timpasslib.aalto.fi/pesplib.html">PESPlib</a>, <a href="https://timpasslib.aalto.fi/solutions.html">TimPassLib</a>, <a href="https://displib.github.io/">DISPLIB</a>, <a href="https://miplib.zib.de/">MIPLIB</a>.</div>
+    <div><a href="https://github.com/LLM4Rail/llm4rail.github.io">Source on GitHub</a></div>
+  </div>
+</footer>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/i18n.js"></script>
+<script src="../assets/js/instances.js"></script>
+</body>
+</html>

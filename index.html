@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LLM4Rail · How Much Can LLMs Help Solve Railway Optimization Problems?</title>
+<meta name="description" content="LLM4Rail studies whether LLM-assisted, solver-backed and independently verified workflows can move the best known bounds on open railway optimization benchmarks.">
+<meta name="author" content="Buyun Cao, Yang Li, Jiayi Wang, Zhaoping Shen, Weilin Tian, Chengwei Zhang, Zhuoyu Wang, Yunzhou Che, Shan Yao, Huaxiao Jiang, Zhongyang Lin, Xin Li, Liner Yang, Ding Ding, Yaping Huang">
+<link rel="canonical" href="https://llm4rail.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LLM4Rail">
+<meta property="og:url" content="https://llm4rail.github.io/">
+<meta property="og:title" content="LLM4Rail · How Much Can LLMs Help Solve Railway Optimization Problems?">
+<meta property="og:description" content="LLM4Rail studies whether LLM-assisted, solver-backed and independently verified workflows can move the best known bounds on open railway optimization benchmarks.">
+<meta property="og:image" content="https://llm4rail.github.io/assets/img/icon-512.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" hreflang="en" href="https://llm4rail.github.io/">
+<link rel="alternate" hreflang="zh-CN" href="https://llm4rail.github.io/zh/">
+<link rel="alternate" hreflang="x-default" href="https://llm4rail.github.io/">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="LLM4Rail home">
+      <img src="assets/img/llm4rail-mark-simple.svg" alt="" width="34" height="34">
+      <span>LLM<b>4</b>Rail</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html" aria-current="page">Overview</a>
+      <a href="#problems">Problems</a>
+      <a href="instances/index.html">Instances</a>
+      <a href="#method">Method</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#citation">Cite</a>
+      <a class="lang-switch" href="zh/index.html" hreflang="zh-CN" lang="zh-CN">中文</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="kicker">Research website · v0 · November 2026</p>
+        <h1>How Much Can LLMs Help Solve Railway Optimization Problems?</h1>
+        <p class="lead">LLM4Rail tests whether large language models, working with optimization solvers and independent checkers, can move the best known bounds on open railway benchmarks: periodic timetabling, timetabling with passenger routing, and real-time train dispatching.</p>
+        <div class="byline"><p class="author-line"><span>Buyun Cao</span><span>Yang Li</span><span>Jiayi Wang</span><span>Zhaoping Shen</span><span>Weilin Tian</span><span>Chengwei Zhang</span><span>Zhuoyu Wang</span><span>Yunzhou Che</span><span>Shan Yao</span><span>Huaxiao Jiang</span><span>Zhongyang Lin</span><span>Xin Li</span><span>Liner Yang</span><span>Ding Ding</span><span>Yaping Huang</span></p></div>
+        <div class="btns">
+          <a class="btn primary" href="#problems">Problem library</a>
+          <a class="btn ghost" href="instances/index.html">Instance catalogue</a>
+          <a class="btn ghost" href="#method">Method</a>
+          <a class="btn ghost" href="https://github.com/LLM4Rail/llm4rail.github.io">GitHub</a>
+        </div>
+        <div class="notice" role="note">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D97A16" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16.5v.01"></path></svg>
+          <span>No LLM4Rail results have been released yet. Every number on this site describes the public baselines we start from, with a link to its source.</span>
+        </div>
+      </div>
+      <div class="hero-mark">
+        <img src="assets/img/llm4rail-mark.svg" alt="LLM4Rail mark: two rails, the upper and lower bound, converging on an orange point, the optimum" width="320" height="320">
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="stats" aria-label="Benchmark baselines">
+      <div class="stat"><div class="num">166</div><div class="lbl">Catalogue entries across four libraries, including model variants</div></div>
+      <div class="stat"><div class="num">32–50%</div><div class="lbl">Gap between best known solution and best lower bound on the 16 core PESPlib railway instances</div></div>
+      <div class="stat"><div class="num">74 / 112</div><div class="lbl">DISPLIB dispatching instances with 72 optima reported in the literature and 2 matching bounds across sources</div></div>
+      <div class="stat"><div class="num">21 / 21</div><div class="lbl">Tracked TimPassLib data sets not yet proven optimal</div></div>
+    </div>
+
+    <section class="news" aria-labelledby="news-h">
+      <h2 id="news-h">News</h2>
+      <ul>
+        <li><time datetime="2026-11-11">2026-11-11</time><span>Website online in English and Chinese.</span></li>
+      </ul>
+    </section>
+
+    <!-- 01 -->
+    <section class="section" id="question" aria-labelledby="q-h">
+      <div class="sec-head">
+        <div class="sec-num">01</div>
+        <div>
+          <h2 id="q-h">The question</h2>
+          <p>Railway planning problems are hard, valuable, and unusually well benchmarked. That makes them a good test of what LLMs add to optimization.</p>
+        </div>
+      </div>
+      <div class="sec-body prose">
+        <p>LLM4Rail studies whether LLMs can help improve feasible timetables and dispatching solutions, tighten lower bounds, and reproduce known optima. Of the 166 model entries in the <a href="instances/index.html">catalogue</a>, 87 have optima reported by a paper or benchmark library, and 2 have matching bounds across sources. The remaining 77 have no published proof of optimality.</p>
+        <p>All 18 <strong>PESPlib</strong> railway instances and all 21 <strong>TimPassLib</strong> railway and urban rail instances remain open.</p>
+        <p>Of the 112 <strong>DISPLIB</strong> instances, <strong>72 are reported optimal</strong> in <a href="https://doi.org/10.4230/OASIcs.ATMOS.2026.6">Tables 5–6 of Stärk et al.</a> For two more, <code>nor5_small_1</code> and <code>nor5_small_5</code>, the verified feasible objective values match the lower bounds reported in <a href="https://doi.org/10.1016/j.jrtpm.2026.100600">Table B.13 of Fuchs et al.</a> The remaining <strong>38 open instances</strong> are all 32 Wabtec instances, <code>nor5_small_2</code>, and <code>nor5_large_1</code> through <code>nor5_large_5</code>.</p>
+        <p><strong>MIPLIB 2017</strong> marks all 15 tracked railway models as optimal in its <a href="https://miplib.zib.de/downloads/miplib2017-v37.solu">official solution file, version 37</a>.</p>
+        <p>LLM4Rail follows the research design of <a href="https://llm4mip.github.io/">LLM4MIP</a>, which applied LLM-assisted, solver-backed workflows to the open instances of MIPLIB. We ask the same question for railway problems, where the LLM can also draw on the structure of lines, periods, transfers and track layouts.</p>
+        <p>Two things we commit to from the start: no result is accepted from LLM output alone, and every reported result names the model, the solvers and the compute it used.</p>
+      </div>
+    </section>
+
+    <!-- 02 -->
+    <section class="section" id="problems" aria-labelledby="p-h">
+      <div class="sec-head">
+        <div class="sec-num">02</div>
+        <div>
+          <h2 id="p-h">Problem library</h2>
+          <p>Planning covers periodic timetabling, passenger routing and railway slot allocation. Operations covers real-time dispatching and timetable rescheduling after delays.</p>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="cards">
+          <article class="card">
+            <div class="meta"><span class="tag track-a">Planning</span><span class="tag">18 instances</span></div>
+            <h3>PESPlib</h3>
+            <p>Periodic event scheduling: find a timetable that repeats every period and minimises weighted slack. The catalogue covers railway instances R1L1–R4L4 and two railway variants.</p>
+            <ul class="facts">
+              <li>All 18 tracked instances remain open.</li>
+              <li>The library states that its lower bounds are not verified.</li>
+              <li>Records were last improved in August 2026.</li>
+            </ul>
+            <a class="more" href="instances/index.html#PESPlib">18 instances in the catalogue →</a>
+          </article>
+          <article class="card">
+            <div class="meta"><span class="tag track-a">Planning</span><span class="tag">21 data sets</span></div>
+            <h3>TimPassLib</h3>
+            <p>Periodic timetabling and passenger routing optimised together. Networks include S-Bahn Hamburg, the Athens metro, regional and long-distance railways, and the 16 PESPlib railway networks with passenger demand.</p>
+            <ul class="facts">
+              <li>All 21 tracked data sets remain open, with gaps from 0.1% to 3.1%.</li>
+              <li>A Python verifier checks a timetable and computes optimal routing.</li>
+            </ul>
+            <a class="more" href="instances/index.html#TimPassLib">21 data sets in the catalogue →</a>
+          </article>
+          <article class="card">
+            <div class="meta"><span class="tag track-a">Operations</span><span class="tag">112 instances</span></div>
+            <h3>DISPLIB</h3>
+            <p>Train dispatching: re-route and re-schedule trains after delays. Real instances from Siemens Mobility (Italy), SINTEF (Norway), SBB (Switzerland) and Wabtec.</p>
+            <ul class="facts">
+              <li>Published results report 72 optima, including 9 SBB instances with objective value 0. Two further instances have matching bounds across sources.</li>
+              <li>All 112 instances have a listed upper and lower bound. For the 9 SBB instances, zero is a lower bound because the objective is nonnegative.</li>
+              <li>JSON format, a solution verifier and a reference MILP solver.</li>
+            </ul>
+            <a class="more" href="instances/index.html#DISPLIB">112 instances in the catalogue →</a>
+          </article>
+          <article class="card">
+            <div class="meta"><span class="tag track-a">Planning and operations</span><span class="tag">15 instances</span></div>
+            <h3>MIPLIB rail instances</h3>
+            <p>Models from MIPLIB 2017 for periodic timetabling, railway slot allocation and train rescheduling.</p>
+            <ul class="facts">
+              <li>13 Easy and 2 Hard models.</li>
+              <li>MIPLIB publishes optimal values for all 15 models.</li>
+            </ul>
+            <a class="more" href="instances/index.html#MIPLIB%202017">15 instances in the catalogue →</a>
+          </article>
+        </div>
+        <p class="ext">Later extensions: problems from the <a href="https://connect.informs.org/railway-applications/new-item3/problem-solving-competition681">INFORMS RAS Problem Solving Competition</a> (yards, blocking, switching), and <a href="https://flatland-association.github.io/flatland-book/intro.html">Flatland</a> for comparison with reinforcement-learning methods.</p>
+      </div>
+    </section>
+
+    <!-- 03 -->
+    <section class="section" id="gaps" aria-labelledby="g-h">
+      <div class="sec-head">
+        <div class="sec-num">03</div>
+        <div>
+          <h2 id="g-h">Where the gaps are</h2>
+          <p>The tracked PESPlib instances sit 30% to 50% from their lower bounds. The 21 TimPassLib data sets in the catalogue have gaps from 0.1% to 3.1%. DISPLIB has 38 instances with a positive gap.</p>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="chart-card">
+          <div class="chart-top">
+            <div>
+              <h3>Relative gap per instance</h3>
+              <p>(best known − best lower bound) ÷ |best known| · hover a bar for the values</p>
+            </div>
+            <div class="controls">
+              <div class="seg" role="group" aria-label="Library">
+                <button type="button" data-lib="PESPlib" aria-pressed="true">PESPlib</button>
+                <button type="button" data-lib="TimPassLib" aria-pressed="false">TimPassLib</button>
+              </div>
+              <div class="seg" role="group" aria-label="View">
+                <button type="button" data-view="chart" aria-pressed="true">Chart</button>
+                <button type="button" data-view="table" aria-pressed="false">Table</button>
+              </div>
+            </div>
+          </div>
+          <div id="gap-chart" role="img" aria-label="Horizontal bar chart of the relative gap per instance for the selected library."></div>
+          <div id="gap-table" class="table-box" hidden></div>
+          <div class="legend" id="gap-legend"><span><i class="sw-rail"></i>Railway and railway variants</span></div>
+          <p class="source" data-src="PESPlib">Source: <a href="https://timpasslib.aalto.fi/pesplib.html">PESPlib records table</a>, read 2026-11-11. PESPlib notes that lower bounds are not verified.</p>
+          <p class="source" data-src="TimPassLib" hidden>Source: <a href="https://timpasslib.aalto.fi/solutions.html">TimPassLib solutions page</a>, read 2026-11-11. Lower bounds come from the library's routing relaxation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 -->
+    <section class="section" id="method" aria-labelledby="m-h">
+      <div class="sec-head">
+        <div class="sec-num">04</div>
+        <div>
+          <h2 id="m-h">Method</h2>
+          <p>The LLM proposes. Solvers compute. An independent checker decides what counts.</p>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="flow">
+          <div class="step"><div class="n">STEP 1</div><h3>Instance</h3><p>The benchmark file, its current best bounds, the official verifier, and what the lines and stations mean.</p></div>
+          <div class="step"><div class="n">STEP 2</div><h3>LLM proposes</h3><p>Reads the structure, then proposes decompositions, neighbourhoods, reductions and lower-bound arguments.</p></div>
+          <div class="step"><div class="n">STEP 3</div><h3>Backend computes</h3><p>MIP solvers and dedicated algorithms search for solutions and compute bounds, with full run logs.</p></div>
+          <div class="step accept"><div class="n">STEP 4</div><h3>Checker accepts</h3><p>The library's own verifier, exact certificate replay, and hashes of every file. Failures go back to step 2.</p></div>
+        </div>
+        <div class="rule-box"><strong>Acceptance rule.</strong> LLM4Rail publishes experimental results after they pass the benchmark's official verifier or an exact certificate check. We call a result a new record once the library maintainers list it.</div>
+
+        <h3 class="sub-h">Skills</h3>
+        <div class="skills">
+          <article class="card"><span class="pill">In development</span><h3>Timetable primal skill</h3><p>Decompose by line and corridor, re-optimise neighbourhoods around the incumbent, and warm-start from the best known timetable.</p></article>
+          <article class="card"><span class="pill">In development</span><h3>Timetable bound skill</h3><p>Find strong cycle constraints and decompositions, and emit lower-bound certificates that can be replayed in exact arithmetic.</p></article>
+          <article class="card"><span class="pill">Planned</span><h3>Dispatching skill</h3><p>Fast re-routing and re-scheduling for DISPLIB instances, with lower bounds to show how far each solution is from optimal.</p></article>
+        </div>
+        <p class="ext">Each skill will be compared on equal time and hardware against two arms: the same LLM workflow without the skill, and the solvers alone.</p>
+      </div>
+    </section>
+
+    <!-- 05 -->
+    <section class="section" id="verification" aria-labelledby="v-h">
+      <div class="sec-head">
+        <div class="sec-num">05</div>
+        <div>
+          <h2 id="v-h">Verification and disclosure</h2>
+          <p>LLM4Rail experimental results carry the evidence grades below. The instance catalogue lists the sources of the published baseline bounds.</p>
+        </div>
+      </div>
+      <div class="sec-body two">
+        <ol class="grades">
+          <li><span class="g">E1</span><div><h3>Exact certificate</h3><p>A bound or optimality proof that replays in rational arithmetic.</p></div></li>
+          <li><span class="g">E2</span><div><h3>Official verifier</h3><p>A solution accepted by the library's own checking program.</p></div></li>
+          <li><span class="g">E3</span><div><h3>Solver numerical result</h3><p>A bound reported by a solver within its default tolerances.</p></div></li>
+          <li><span class="g">E4</span><div><h3>Tolerance-accepted</h3><p>A result that holds only under a stated numerical tolerance.</p></div></li>
+        </ol>
+        <div>
+          <h3 class="list-h">What LLM4Rail discloses for each result</h3>
+          <ul class="checklist">
+            <li>The LLM and version used</li>
+            <li>Solver names and versions</li>
+            <li>Wall-clock time and hardware per instance</li>
+            <li>Tokens consumed per instance</li>
+            <li>SHA-256 of the model and solution files</li>
+            <li>The baseline it is compared with, and its date</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 -->
+    <section class="section" id="roadmap" aria-labelledby="r-h">
+      <div class="sec-head">
+        <div class="sec-num">06</div>
+        <div>
+          <h2 id="r-h">Roadmap</h2>
+          <p>Four phases. Each ends at a gate that has to be passed before the next starts.</p>
+        </div>
+      </div>
+      <div class="sec-body road">
+        <div class="phase now"><span class="when">Dec 2026 – Jan 2027</span><h3>1 · Start</h3><ul><li>Website v0</li><li>Reproduce current best bounds</li><li>Fix the disclosure format</li></ul><div class="gate">Baselines reproduced</div></div>
+        <div class="phase"><span class="when">Feb – Apr 2027</span><h3>2 · Core benchmarks</h3><ul><li>All PESPlib instances</li><li>First TimPassLib runs</li><li>Primal and bound skills v1</li></ul><div class="gate">First record listed by a library</div></div>
+        <div class="phase"><span class="when">May – Jul 2027</span><h3>3 · Extend</h3><ul><li>DISPLIB and Flatland</li><li>Dispatching skill</li><li>Equal-budget comparisons</li></ul><div class="gate">Report draft complete</div></div>
+        <div class="phase"><span class="when">Aug – Oct 2027</span><h3>4 · Release</h3><ul><li>Technical report</li><li>Skills v2</li><li>Partner instances, if data allows</li></ul><div class="gate">Public release</div></div>
+      </div>
+    </section>
+
+    <!-- 07 -->
+    <section class="section" id="citation" aria-labelledby="c-h">
+      <div class="sec-head">
+        <div class="sec-num">07</div>
+        <div>
+          <h2 id="c-h">Citation</h2>
+          <p>Until the technical report is out, please cite the website.</p>
+        </div>
+      </div>
+      <div class="sec-body">
+<pre class="bib" id="bibtex">@misc{cao2026llm4rail,
+  author = {Cao, Buyun and Li, Yang and Wang, Jiayi and Shen, Zhaoping and Tian, Weilin and Zhang, Chengwei and Wang, Zhuoyu and Che, Yunzhou and Yao, Shan and Jiang, Huaxiao and Lin, Zhongyang and Li, Xin and Yang, Liner and Ding, Ding and Huang, Yaping},
+  title  = {How Much Can {LLMs} Help Solve Railway Optimization Problems?},
+  year   = {2026},
+  month  = nov,
+  url    = {https://llm4rail.github.io/},
+  note   = {Research website}
+}</pre>
+        <button type="button" class="btn ghost copy" id="copy-bib" data-ok="Copied" data-fail="Select the text above to copy">Copy BibTeX</button>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <img src="assets/img/llm4rail-horizontal-reverse.svg" alt="LLM4Rail">
+    <div>Benchmarks belong to their maintainers: <a href="https://timpasslib.aalto.fi/pesplib.html">PESPlib</a>, <a href="https://timpasslib.aalto.fi/solutions.html">TimPassLib</a>, <a href="https://displib.github.io/">DISPLIB</a>, <a href="https://miplib.zib.de/">MIPLIB</a>.</div>
+    <div><a href="https://github.com/LLM4Rail/llm4rail.github.io">Source on GitHub</a></div>
+  </div>
+</footer>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/home.js"></script>
+</body>
+</html>

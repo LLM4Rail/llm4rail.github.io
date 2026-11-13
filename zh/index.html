@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LLM4Rail · 大语言模型能在多大程度上帮助求解铁路优化问题？</title>
+<meta name="description" content="LLM4Rail 研究：由大语言模型辅助、求解器计算、独立程序验证的工作流，能否推进铁路优化开放基准实例的已知最好界。">
+<meta name="author" content="曹步云、李洋、王佳怡、沈照坪、田威凛、张成玮、王卓钰、车云舟、姚珊、蒋华孝、林中阳、李鑫、杨麟儿、丁丁、黄雅平">
+<link rel="canonical" href="https://llm4rail.github.io/zh/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LLM4Rail">
+<meta property="og:url" content="https://llm4rail.github.io/zh/">
+<meta property="og:title" content="LLM4Rail · 大语言模型能在多大程度上帮助求解铁路优化问题？">
+<meta property="og:description" content="LLM4Rail 研究：由大语言模型辅助、求解器计算、独立程序验证的工作流，能否推进铁路优化开放基准实例的已知最好界。">
+<meta property="og:image" content="https://llm4rail.github.io/assets/img/icon-512.png">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" hreflang="en" href="https://llm4rail.github.io/">
+<link rel="alternate" hreflang="zh-CN" href="https://llm4rail.github.io/zh/">
+<link rel="alternate" hreflang="x-default" href="https://llm4rail.github.io/">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&family=Space+Grotesk:wght@500;600&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="LLM4Rail 首页">
+      <img src="../assets/img/llm4rail-mark-simple.svg" alt="" width="34" height="34">
+      <span>LLM<b>4</b>Rail</span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="index.html" aria-current="page">概览</a>
+      <a href="#problems">问题库</a>
+      <a href="instances/index.html">实例</a>
+      <a href="#method">方法</a>
+      <a href="#roadmap">路线图</a>
+      <a href="#citation">引用</a>
+      <a class="lang-switch" href="../index.html" hreflang="en" lang="en">EN</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="kicker">研究网站 · v0 · 2026 年 11 月</p>
+        <h1>大语言模型能在多大程度上帮助求解铁路优化问题？</h1>
+        <p class="lead">LLM4Rail 检验这样一个问题：大语言模型与优化求解器、独立验证程序协同工作，能否推进铁路开放基准实例的已知最好界。问题涵盖周期运行图编制、运行图与客流路径一体化优化，以及列车实时调度。</p>
+        <div class="byline"><p class="author-line"><span>曹步云</span><span>李洋</span><span>王佳怡</span><span>沈照坪</span><span>田威凛</span><span>张成玮</span><span>王卓钰</span><span>车云舟</span><span>姚珊</span><span>蒋华孝</span><span>林中阳</span><span>李鑫</span><span>杨麟儿</span><span>丁丁</span><span>黄雅平</span></p></div>
+        <div class="btns">
+          <a class="btn primary" href="#problems">问题库</a>
+          <a class="btn ghost" href="instances/index.html">实例目录</a>
+          <a class="btn ghost" href="#method">方法</a>
+          <a class="btn ghost" href="https://github.com/LLM4Rail/llm4rail.github.io">GitHub</a>
+        </div>
+        <div class="notice" role="note">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D97A16" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16.5v.01"></path></svg>
+          <span>LLM4Rail 尚未发布任何结果。本站所有数字都是我们出发时的公开基准数据，并附有来源链接。</span>
+        </div>
+      </div>
+      <div class="hero-mark">
+        <img src="../assets/img/llm4rail-mark.svg" alt="LLM4Rail 标志：两条铁轨代表上界和下界，向远处汇聚到代表最优解的橙色圆点" width="320" height="320">
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="stats" aria-label="基准数据概况">
+      <div class="stat"><div class="num">166</div><div class="lbl">四个问题库的目录条目数，含模型变体</div></div>
+      <div class="stat"><div class="num">32–50%</div><div class="lbl">PESPlib 16 个核心铁路实例的已知最好解与最好下界之间的差距</div></div>
+      <div class="stat"><div class="num">74 / 112</div><div class="lbl">DISPLIB 调度实例中，72 个见论文最优结果，另 2 个跨来源上下界相等</div></div>
+      <div class="stat"><div class="num">21 / 21</div><div class="lbl">收录的 TimPassLib 数据集中尚未证明最优的数量</div></div>
+    </div>
+
+    <section class="news" aria-labelledby="news-h">
+      <h2 id="news-h">动态</h2>
+      <ul>
+        <li><time datetime="2026-11-11">2026-11-11</time><span>网站中英文版上线。</span></li>
+      </ul>
+    </section>
+
+    <!-- 01 -->
+    <section class="section" id="question" aria-labelledby="q-h">
+      <div class="sec-head">
+        <div class="sec-num">01</div>
+        <div>
+          <h2 id="q-h">研究问题</h2>
+          <p>铁路规划问题难度高、价值大，公开基准又格外完善，很适合用来检验 LLM 能给优化带来什么。</p>
+        </div>
+      </div>
+      <div class="sec-body prose">
+        <p>LLM4Rail 研究大语言模型能否帮助改进铁路运行图和调度的可行解、提高下界，以及在已知最优值的实例上复现结果。<a href="instances/index.html">目录</a>的 166 个模型条目中，87 个有论文或问题库报告的最优结果，2 个的跨来源上下界相等，其余 77 个尚未证明最优。</p>
+        <p><strong>PESPlib</strong> 的 18 个铁路实例和 <strong>TimPassLib</strong> 的 21 个铁路及城市轨道交通实例均未证明最优。</p>
+        <p><strong>DISPLIB</strong> 的 112 个实例中，<strong>72 个见论文最优结果</strong>，详见 <a href="https://doi.org/10.4230/OASIcs.ATMOS.2026.6">Stärk 等的表 5–6</a>。另有 <code>nor5_small_1</code> 和 <code>nor5_small_5</code> 的已验证可行解目标值与 <a href="https://doi.org/10.1016/j.jrtpm.2026.100600">Fuchs 等表 B.13 报告的下界</a>相等。其余 <strong>38 个尚未证明最优</strong>，包括全部 32 个 Wabtec 实例、<code>nor5_small_2</code> 和 <code>nor5_large_1</code> 至 <code>nor5_large_5</code>。</p>
+        <p><strong>MIPLIB 2017</strong> 收录的 15 个铁路模型均在<a href="https://miplib.zib.de/downloads/miplib2017-v37.solu">官方解文件第 37 版</a>中标为最优。</p>
+        <p>LLM4Rail 沿用 <a href="https://llm4mip.github.io/">LLM4MIP</a> 的研究设计。LLM4MIP 把 LLM 辅助、求解器支撑的工作流用于 MIPLIB 的开放实例；我们把同样的问题带到铁路领域，在这里 LLM 还能利用线路、周期、换乘和股道布置等业务结构。</p>
+        <p>从一开始我们就承诺两件事：任何结果都不能只凭 LLM 的输出成立；每个公布的结果都写明所用的模型、求解器和算力。</p>
+      </div>
+    </section>
+
+    <!-- 02 -->
+    <section class="section" id="problems" aria-labelledby="p-h">
+      <div class="sec-head">
+        <div class="sec-num">02</div>
+        <div>
+          <h2 id="p-h">问题库</h2>
+          <p>规划涵盖周期运行图编制、客流路径与铁路时隙分配，运营涵盖晚点后的实时调度和运行图重排。</p>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="cards">
+          <article class="card">
+            <div class="meta"><span class="tag track-a">规划</span><span class="tag">18 个实例</span></div>
+            <h3>PESPlib</h3>
+            <p>周期事件调度问题：找一张按周期重复的运行图，使加权松弛时间最小。目录收录铁路实例 R1L1–R4L4 及两个铁路变体。</p>
+            <ul class="facts">
+              <li>收录的 18 个实例均未证明最优。</li>
+              <li>问题库注明其下界未经验证。</li>
+              <li>纪录最近一次刷新是在 2026 年 8 月。</li>
+            </ul>
+            <a class="more" href="instances/index.html#PESPlib">在实例目录中查看 18 个实例 →</a>
+          </article>
+          <article class="card">
+            <div class="meta"><span class="tag track-a">规划</span><span class="tag">21 个数据集</span></div>
+            <h3>TimPassLib</h3>
+            <p>周期运行图与客流路径一体化优化。路网包括汉堡 S-Bahn、雅典地铁、区域及长途铁路，以及加入客流需求的 PESPlib 16 个铁路实例。</p>
+            <ul class="facts">
+              <li>收录的 21 个数据集均未证明最优，差距在 0.1% 到 3.1% 之间。</li>
+              <li>Python 验证程序可检查运行图并计算最优客流路径。</li>
+            </ul>
+            <a class="more" href="instances/index.html#TimPassLib">在实例目录中查看 21 个数据集 →</a>
+          </article>
+          <article class="card">
+            <div class="meta"><span class="tag track-a">运营</span><span class="tag">112 个实例</span></div>
+            <h3>DISPLIB</h3>
+            <p>列车调度：晚点发生后重新安排列车的径路和次序。真实实例来自西门子交通（意大利）、SINTEF（挪威）、瑞士联邦铁路和 Wabtec。</p>
+            <ul class="facts">
+              <li>72 个见论文最优结果，其中 9 个瑞士实例的最优值为 0。另有 2 个实例的跨来源上下界相等。</li>
+              <li>112 个实例均列出上界和下界，其中 9 个瑞士实例的下界由目标值非负推出。</li>
+              <li>提供 JSON 格式规范、解验证程序和参考 MILP 求解器。</li>
+            </ul>
+            <a class="more" href="instances/index.html#DISPLIB">在实例目录中查看 112 个实例 →</a>
+          </article>
+          <article class="card">
+            <div class="meta"><span class="tag track-a">规划与运营</span><span class="tag">15 个实例</span></div>
+            <h3>MIPLIB 铁路实例</h3>
+            <p>收录 MIPLIB 2017 的周期运行图编制、铁路时隙分配和列车重排模型。</p>
+            <ul class="facts">
+              <li>13 个 Easy 模型、2 个 Hard 模型。</li>
+              <li>MIPLIB 已公布全部 15 个模型的最优值。</li>
+            </ul>
+            <a class="more" href="instances/index.html#MIPLIB%202017">在实例目录中查看 15 个实例 →</a>
+          </article>
+        </div>
+        <p class="ext">后续扩展：<a href="https://connect.informs.org/railway-applications/new-item3/problem-solving-competition681">INFORMS RAS 问题求解竞赛</a>的题目（编组站、车流组号、调车），以及用于和强化学习方法对比的 <a href="https://flatland-association.github.io/flatland-book/intro.html">Flatland</a>。</p>
+      </div>
+    </section>
+
+    <!-- 03 -->
+    <section class="section" id="gaps" aria-labelledby="g-h">
+      <div class="sec-head">
+        <div class="sec-num">03</div>
+        <div>
+          <h2 id="g-h">差距在哪里</h2>
+          <p>收录的 PESPlib 实例距下界还有 30% 到 50%。TimPassLib 收录的 21 个数据集差距在 0.1% 到 3.1% 之间。DISPLIB 还有 38 个实例的上下界存在差距。</p>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="chart-card">
+          <div class="chart-top">
+            <div>
+              <h3>各实例的相对差距</h3>
+              <p>（已知最好解 − 最好下界）÷ |已知最好解| · 鼠标悬停可看数值</p>
+            </div>
+            <div class="controls">
+              <div class="seg" role="group" aria-label="问题库">
+                <button type="button" data-lib="PESPlib" aria-pressed="true">PESPlib</button>
+                <button type="button" data-lib="TimPassLib" aria-pressed="false">TimPassLib</button>
+              </div>
+              <div class="seg" role="group" aria-label="视图">
+                <button type="button" data-view="chart" aria-pressed="true">图表</button>
+                <button type="button" data-view="table" aria-pressed="false">表格</button>
+              </div>
+            </div>
+          </div>
+          <div id="gap-chart" role="img" aria-label="所选问题库各实例相对差距的横向条形图。"></div>
+          <div id="gap-table" class="table-box" hidden></div>
+          <div class="legend" id="gap-legend"><span><i class="sw-rail"></i>铁路及铁路变体</span></div>
+          <p class="source" data-src="PESPlib">来源：<a href="https://timpasslib.aalto.fi/pesplib.html">PESPlib 纪录表</a>，2026-11-11 读取。PESPlib 注明其下界未经验证。</p>
+          <p class="source" data-src="TimPassLib" hidden>来源：<a href="https://timpasslib.aalto.fi/solutions.html">TimPassLib 解页面</a>，2026-11-11 读取。下界来自问题库作者的路径松弛。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 -->
+    <section class="section" id="method" aria-labelledby="m-h">
+      <div class="sec-head">
+        <div class="sec-num">04</div>
+        <div>
+          <h2 id="m-h">方法</h2>
+          <p>LLM 提出想法，求解器负责计算，独立验证程序决定结果算不算数。</p>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="flow">
+          <div class="step"><div class="n">第 1 步</div><h3>实例</h3><p>基准文件、当前最好的上下界、官方验证程序，以及线路和车站的业务含义。</p></div>
+          <div class="step"><div class="n">第 2 步</div><h3>LLM 提出假设</h3><p>理解问题结构，提出分解方式、邻域、约简和下界论证。</p></div>
+          <div class="step"><div class="n">第 3 步</div><h3>后端计算</h3><p>MIP 求解器和专用算法搜索可行解、计算界，保留完整运行日志。</p></div>
+          <div class="step accept"><div class="n">第 4 步</div><h3>检查器裁定</h3><p>问题库自带的验证程序、精确证书重放，以及每个文件的哈希。不通过就回到第 2 步。</p></div>
+        </div>
+        <div class="rule-box"><strong>采纳规则。</strong>LLM4Rail 的实验结果须通过基准的官方验证程序或精确证书检查后才会公布。问题库维护者将结果列入纪录表后，才称为新纪录。</div>
+
+        <h3 class="sub-h">Skill 包</h3>
+        <div class="skills">
+          <article class="card"><span class="pill">开发中</span><h3>运行图上界 skill</h3><p>按线路和通道分解，围绕当前解做邻域重优化，并以已知最好运行图热启动。</p></article>
+          <article class="card"><span class="pill">开发中</span><h3>运行图下界 skill</h3><p>寻找强的环约束和分解方式，输出可在精确算术下重放的下界证书。</p></article>
+          <article class="card"><span class="pill">计划中</span><h3>调度 skill</h3><p>面向 DISPLIB 实例的快速重新排路和排序，并给出下界，说明每个解离最优还有多远。</p></article>
+        </div>
+        <p class="ext">每个 skill 都会在相同时间和硬件下与两组对照比较：不用该 skill 的同一 LLM 工作流，以及纯求解器。</p>
+      </div>
+    </section>
+
+    <!-- 05 -->
+    <section class="section" id="verification" aria-labelledby="v-h">
+      <div class="sec-head">
+        <div class="sec-num">05</div>
+        <div>
+          <h2 id="v-h">验证与披露</h2>
+          <p>LLM4Rail 的实验结果按下列等级披露证据。实例目录另列公开基线的上下界来源。</p>
+        </div>
+      </div>
+      <div class="sec-body two">
+        <ol class="grades">
+          <li><span class="g">E1</span><div><h3>精确证书</h3><p>可在有理数算术下重放的界或最优性证明。</p></div></li>
+          <li><span class="g">E2</span><div><h3>官方验证程序</h3><p>通过问题库自带检查程序的解。</p></div></li>
+          <li><span class="g">E3</span><div><h3>求解器数值结果</h3><p>求解器在默认容差下报告的界。</p></div></li>
+          <li><span class="g">E4</span><div><h3>容差内接受</h3><p>只在注明的数值容差下成立的结果。</p></div></li>
+        </ol>
+        <div>
+          <h3 class="list-h">LLM4Rail 实验结果的披露内容</h3>
+          <ul class="checklist">
+            <li>所用的 LLM 及版本</li>
+            <li>求解器名称及版本</li>
+            <li>每个实例的耗时和硬件</li>
+            <li>每个实例消耗的 token 数</li>
+            <li>模型文件和解文件的 SHA-256</li>
+            <li>对比的基准及其日期</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 -->
+    <section class="section" id="roadmap" aria-labelledby="r-h">
+      <div class="sec-head">
+        <div class="sec-num">06</div>
+        <div>
+          <h2 id="r-h">路线图</h2>
+          <p>分四个阶段，每个阶段结束时设一道关口，通过后才进入下一阶段。</p>
+        </div>
+      </div>
+      <div class="sec-body road">
+        <div class="phase now"><span class="when">2026.12 – 2027.01</span><h3>1 · 启动</h3><ul><li>网站 v0</li><li>复现现有最好界</li><li>定下披露格式</li></ul><div class="gate">基线复现一致</div></div>
+        <div class="phase"><span class="when">2027.02 – 2027.04</span><h3>2 · 主战场</h3><ul><li>PESPlib 全部实例</li><li>TimPassLib 首轮实验</li><li>上界与下界 skill v1</li></ul><div class="gate">首条纪录被问题库收录</div></div>
+        <div class="phase"><span class="when">2027.05 – 2027.07</span><h3>3 · 扩展</h3><ul><li>DISPLIB 与 Flatland</li><li>调度 skill</li><li>等预算对照实验</li></ul><div class="gate">技术报告初稿完成</div></div>
+        <div class="phase"><span class="when">2027.08 – 2027.10</span><h3>4 · 发布</h3><ul><li>技术报告</li><li>skill v2</li><li>合作方实例（视数据情况）</li></ul><div class="gate">正式公开发布</div></div>
+      </div>
+    </section>
+
+    <!-- 07 -->
+    <section class="section" id="citation" aria-labelledby="c-h">
+      <div class="sec-head">
+        <div class="sec-num">07</div>
+        <div>
+          <h2 id="c-h">引用</h2>
+          <p>技术报告发布之前，请引用本网站。</p>
+        </div>
+      </div>
+      <div class="sec-body">
+<pre class="bib" id="bibtex">@misc{cao2026llm4rail,
+  author = {Cao, Buyun and Li, Yang and Wang, Jiayi and Shen, Zhaoping and Tian, Weilin and Zhang, Chengwei and Wang, Zhuoyu and Che, Yunzhou and Yao, Shan and Jiang, Huaxiao and Lin, Zhongyang and Li, Xin and Yang, Liner and Ding, Ding and Huang, Yaping},
+  title  = {How Much Can {LLMs} Help Solve Railway Optimization Problems?},
+  year   = {2026},
+  month  = nov,
+  url    = {https://llm4rail.github.io/},
+  note   = {Research website}
+}</pre>
+        <button type="button" class="btn ghost copy" id="copy-bib" data-ok="已复制" data-fail="请手动选中上方文字复制">复制 BibTeX</button>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <img src="../assets/img/llm4rail-horizontal-reverse.svg" alt="LLM4Rail">
+    <div>各基准归其维护者所有：<a href="https://timpasslib.aalto.fi/pesplib.html">PESPlib</a>、<a href="https://timpasslib.aalto.fi/solutions.html">TimPassLib</a>、<a href="https://displib.github.io/">DISPLIB</a>、<a href="https://miplib.zib.de/">MIPLIB</a>。</div>
+    <div><a href="https://github.com/LLM4Rail/llm4rail.github.io">GitHub 源码</a></div>
+  </div>
+</footer>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/i18n.js"></script>
+<script src="../assets/js/home.js"></script>
+</body>
+</html>

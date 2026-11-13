@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://llm4rail.github.io/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://llm4rail.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://llm4rail.github.io/zh/"/>
+  </url>
+  <url>
+    <loc>https://llm4rail.github.io/zh/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://llm4rail.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://llm4rail.github.io/zh/"/>
+  </url>
+  <url>
+    <loc>https://llm4rail.github.io/instances/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://llm4rail.github.io/instances/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://llm4rail.github.io/zh/instances/"/>
+  </url>
+  <url>
+    <loc>https://llm4rail.github.io/zh/instances/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://llm4rail.github.io/instances/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://llm4rail.github.io/zh/instances/"/>
+  </url>
+</urlset>
