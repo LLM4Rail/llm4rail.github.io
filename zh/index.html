@@ -100,7 +100,7 @@
         <p>LLM4Rail 研究大语言模型能否帮助改进铁路运行图和调度的可行解、提高下界，以及在已知最优值的实例上复现结果。<a href="instances/index.html">目录</a>的 166 个模型条目中，87 个有论文或问题库报告的最优结果，2 个的跨来源上下界相等，其余 77 个尚未证明最优。</p>
         <p><strong>PESPlib</strong> 的 18 个铁路实例和 <strong>TimPassLib</strong> 的 21 个铁路及城市轨道交通实例均未证明最优。</p>
         <p><strong>DISPLIB</strong> 的 112 个实例中，<strong>72 个见论文最优结果</strong>，详见 <a href="https://doi.org/10.4230/OASIcs.ATMOS.2026.6">Stärk 等的表 5–6</a>。另有 <code>nor5_small_1</code> 和 <code>nor5_small_5</code> 的已验证可行解目标值与 <a href="https://doi.org/10.1016/j.jrtpm.2026.100600">Fuchs 等表 B.13 报告的下界</a>相等。其余 <strong>38 个尚未证明最优</strong>，包括全部 32 个 Wabtec 实例、<code>nor5_small_2</code> 和 <code>nor5_large_1</code> 至 <code>nor5_large_5</code>。</p>
-        <p><strong>MIPLIB 2017</strong> 收录的 15 个铁路模型均在<a href="https://miplib.zib.de/downloads/miplib2017-v37.solu">官方解文件第 37 版</a>中标为最优。</p>
+        <p><strong>MIPLIB 2017</strong> 收录的 15 个铁路相关模型均在<a href="https://miplib.zib.de/downloads/miplib2017-v37.solu">官方解文件第 37 版</a>中标为最优。</p>
         <p>LLM4Rail 沿用 <a href="https://llm4mip.github.io/">LLM4MIP</a> 的研究设计。LLM4MIP 把 LLM 辅助、求解器支撑的工作流用于 MIPLIB 的开放实例；我们把同样的问题带到铁路领域，在这里 LLM 还能利用线路、周期、换乘和股道布置等业务结构。</p>
         <p>从一开始我们就承诺两件事：任何结果都不能只凭 LLM 的输出成立；每个公布的结果都写明所用的模型、求解器和算力。</p>
       </div>
@@ -131,7 +131,7 @@
           <article class="card">
             <div class="meta"><span class="tag track-a">规划</span><span class="tag">21 个数据集</span></div>
             <h3>TimPassLib</h3>
-            <p>周期运行图与客流路径一体化优化。路网包括汉堡 S-Bahn、雅典地铁、区域及长途铁路，以及加入客流需求的 PESPlib 16 个铁路实例。</p>
+            <p>周期运行图与客流路径一体化优化。路网包括汉堡 S-Bahn、瑞士长途铁路网、LinTim 的区域、长途和地铁网络，以及加入客流需求的 PESPlib 16 个铁路实例。</p>
             <ul class="facts">
               <li>收录的 21 个数据集均未证明最优，差距在 0.1% 到 3.1% 之间。</li>
               <li>Python 验证程序可检查运行图并计算最优客流路径。</li>
@@ -150,9 +150,9 @@
             <a class="more" href="instances/index.html#DISPLIB">在实例目录中查看 112 个实例 →</a>
           </article>
           <article class="card">
-            <div class="meta"><span class="tag track-a">规划与运营</span><span class="tag">15 个实例</span></div>
+            <div class="meta"><span class="tag track-a">规划</span><span class="tag">15 个实例</span></div>
             <h3>MIPLIB 铁路实例</h3>
-            <p>收录 MIPLIB 2017 的周期运行图编制、铁路时隙分配和列车重排模型。</p>
+            <p>收录 MIPLIB 2017 的周期运行图编制（timtab、ic97、icir97、nh97）、铁路轨道分配（rail01–03）和铁路时隙分配（mzzv11）模型。<code>mzzv42z</code>、<code>traininstance2</code> 和 <code>traininstance6</code> 仅按名称收录，MIPLIB 页面没有说明它们来自铁路。</p>
             <ul class="facts">
               <li>13 个 Easy 模型、2 个 Hard 模型。</li>
               <li>MIPLIB 已公布全部 15 个模型的最优值。</li>

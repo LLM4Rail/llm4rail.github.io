@@ -100,7 +100,7 @@
         <p>LLM4Rail studies whether LLMs can help improve feasible timetables and dispatching solutions, tighten lower bounds, and reproduce known optima. Of the 166 model entries in the <a href="instances/index.html">catalogue</a>, 87 have optima reported by a paper or benchmark library, and 2 have matching bounds across sources. The remaining 77 have no published proof of optimality.</p>
         <p>All 18 <strong>PESPlib</strong> railway instances and all 21 <strong>TimPassLib</strong> railway and urban rail instances remain open.</p>
         <p>Of the 112 <strong>DISPLIB</strong> instances, <strong>72 are reported optimal</strong> in <a href="https://doi.org/10.4230/OASIcs.ATMOS.2026.6">Tables 5–6 of Stärk et al.</a> For two more, <code>nor5_small_1</code> and <code>nor5_small_5</code>, the verified feasible objective values match the lower bounds reported in <a href="https://doi.org/10.1016/j.jrtpm.2026.100600">Table B.13 of Fuchs et al.</a> The remaining <strong>38 open instances</strong> are all 32 Wabtec instances, <code>nor5_small_2</code>, and <code>nor5_large_1</code> through <code>nor5_large_5</code>.</p>
-        <p><strong>MIPLIB 2017</strong> marks all 15 tracked railway models as optimal in its <a href="https://miplib.zib.de/downloads/miplib2017-v37.solu">official solution file, version 37</a>.</p>
+        <p><strong>MIPLIB 2017</strong> marks all 15 tracked railway-related models as optimal in its <a href="https://miplib.zib.de/downloads/miplib2017-v37.solu">official solution file, version 37</a>.</p>
         <p>LLM4Rail follows the research design of <a href="https://llm4mip.github.io/">LLM4MIP</a>, which applied LLM-assisted, solver-backed workflows to the open instances of MIPLIB. We ask the same question for railway problems, where the LLM can also draw on the structure of lines, periods, transfers and track layouts.</p>
         <p>Two things we commit to from the start: no result is accepted from LLM output alone, and every reported result names the model, the solvers and the compute it used.</p>
       </div>
@@ -131,7 +131,7 @@
           <article class="card">
             <div class="meta"><span class="tag track-a">Planning</span><span class="tag">21 data sets</span></div>
             <h3>TimPassLib</h3>
-            <p>Periodic timetabling and passenger routing optimised together. Networks include S-Bahn Hamburg, the Athens metro, regional and long-distance railways, and the 16 PESPlib railway networks with passenger demand.</p>
+            <p>Periodic timetabling and passenger routing optimised together. Networks include S-Bahn Hamburg, the Swiss long-distance network, the regional, long-distance and metro networks from LinTim, and the 16 PESPlib railway networks with passenger demand.</p>
             <ul class="facts">
               <li>All 21 tracked data sets remain open, with gaps from 0.1% to 3.1%.</li>
               <li>A Python verifier checks a timetable and computes optimal routing.</li>
@@ -150,9 +150,9 @@
             <a class="more" href="instances/index.html#DISPLIB">112 instances in the catalogue →</a>
           </article>
           <article class="card">
-            <div class="meta"><span class="tag track-a">Planning and operations</span><span class="tag">15 instances</span></div>
+            <div class="meta"><span class="tag track-a">Planning</span><span class="tag">15 instances</span></div>
             <h3>MIPLIB rail instances</h3>
-            <p>Models from MIPLIB 2017 for periodic timetabling, railway slot allocation and train rescheduling.</p>
+            <p>Models from MIPLIB 2017 for periodic timetabling (timtab, ic97, icir97, nh97), railway track allocation (rail01–03) and railway slot allocation (mzzv11). <code>mzzv42z</code>, <code>traininstance2</code> and <code>traininstance6</code> are included by name only: their MIPLIB pages do not state a railway origin.</p>
             <ul class="facts">
               <li>13 Easy and 2 Hard models.</li>
               <li>MIPLIB publishes optimal values for all 15 models.</li>

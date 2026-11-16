@@ -38,7 +38,10 @@ Edit `data/instances.json`, then regenerate the CSV download and the site's Java
 
 ```sh
 python3 scripts/export_instances.py
+python3 scripts/validate_results.py   # add --evidence-root DIR to check evidence bundles
 ```
+
+The validator checks the baseline fields (gap, status, bound order), every LLM4Rail result, the bilingual labels, and that the CSV and JavaScript data are up to date. It exits non-zero on any error. Its tests run with `python3 -m unittest discover -s scripts -p 'test_*.py'`.
 
 - `library` and `instance` together identify a catalogue entry. A shared `family` marks confirmed related models, which count as separate entries.
 - `n1` and `n2` give the size in events and activities (`ev_act`), trains and operations (`tr_op`), or variables and constraints (`var_con`).
@@ -47,9 +50,12 @@ python3 scripts/export_instances.py
 
 When a new result is verified, update the affected value and its evidence fields, then reconcile `gap`, `status`, and the totals in both languages. Set `llm4rail` and add its bilingual labels to `i18n.js` when publishing a project result.
 
+A project result (`llm4rail` other than `pending`) also carries `llm4rail_primal` and/or `llm4rail_dual`, `primal_gain` / `dual_gain`, `primal_evidence` / `dual_evidence` (E1–E4), `baseline_date`, `result_date`, `model_sha256`, `solution_sha256`, `llm`, `solver`, `hardware`, `wall_seconds`, `tokens`, `skill`, `library_record`, and `evidence_url`. Gains are measured against the frozen snapshot `data/baselines/<baseline_date>.json`, not against the live `best_known` and `best_bound`. Never edit a snapshot; add a new dated one instead.
+
 ## Data sources
 
 - PESPlib records table: https://timpasslib.aalto.fi/pesplib.html (read 2026-11-11)
+  - Activity counts (`n2`) are taken from the instance files in set-01. The records table lists more: one more for 15 instances and twenty more for R4L2 (checked 2026-11-16). Event counts agree.
 - MIPLIB 2017 Easy and Hard tags and solution file v37: https://miplib.zib.de/download.html
 - TimPassLib solutions page: https://timpasslib.aalto.fi/solutions.html (read 2026-11-11)
 - DISPLIB: https://displib.github.io/ (repository github.com/displib/displib.github.io, last updated 2025-09-18)

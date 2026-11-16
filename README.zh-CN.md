@@ -38,7 +38,10 @@ LLM4Rail 研究网站。这是一个面向 GitHub Pages 的静态站点:无需�
 
 ```sh
 python3 scripts/export_instances.py
+python3 scripts/validate_results.py   # 加 --evidence-root DIR 可同时检查证据包
 ```
+
+校验脚本检查基线字段（差距、状态、上下界顺序）、每条 LLM4Rail 结果、双语标签，以及 CSV 和 JavaScript 数据是否已重新生成；有任何错误时以非零状态退出。测试命令为 `python3 -m unittest discover -s scripts -p 'test_*.py'`。
 
 - `library` 和 `instance` 共同标识一个目录条目。同一 `family` 标记已确认的同源模型，各模型分别计入条目数。
 - `n1` 和 `n2` 表示事件数与活动数（`ev_act`）、列车数与作业数（`tr_op`），或变量数与约束数（`var_con`）。
@@ -47,9 +50,12 @@ python3 scripts/export_instances.py
 
 结果通过验证后，更新对应数值及证据字段，同步 `gap`、`status` 和两种语言页面的统计。发布本项目结果时，更新 `llm4rail` 并在 `i18n.js` 中添加双语标签。
 
+本项目结果（`llm4rail` 不为 `pending`）还须填写 `llm4rail_primal` 和/或 `llm4rail_dual`、`primal_gain` / `dual_gain`、`primal_evidence` / `dual_evidence`（E1–E4）、`baseline_date`、`result_date`、`model_sha256`、`solution_sha256`、`llm`、`solver`、`hardware`、`wall_seconds`、`tokens`、`skill`、`library_record` 和 `evidence_url`。改进量相对冻结快照 `data/baselines/<baseline_date>.json` 计算，而不是相对当前的 `best_known` 和 `best_bound`。快照一经建立不得修改；需要新基线时另建一个带日期的快照。
+
 ## 数据来源
 
 - PESPlib 记录表:https://timpasslib.aalto.fi/pesplib.html(读取于 2026-11-11)
+  - 活动数（`n2`）取自 set-01 的实例文件。记录表列出的数目更多：15 个实例多 1 个，R4L2 多 20 个（2026-11-16 核对）；事件数一致。
 - MIPLIB 2017 Easy、Hard 标签及第 37 版解文件：https://miplib.zib.de/download.html
 - TimPassLib 解页面:https://timpasslib.aalto.fi/solutions.html(读取于 2026-11-11)
 - DISPLIB:https://displib.github.io/(仓库 github.com/displib/displib.github.io,最后更新 2025-09-18)
